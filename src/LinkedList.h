@@ -67,6 +67,7 @@ namespace csi281 {
                 current = current->next;
                 currentIndex++;
             }
+
             if (current->data == item)
                 return currentIndex;
             else
