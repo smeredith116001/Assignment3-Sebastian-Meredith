@@ -25,6 +25,7 @@
 //  ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 //  OTHER DEALINGS IN THE SOFTWARE.
 
+//Edited by Sebastian Meredith
 #ifndef linkedlist_hpp
 #define linkedlist_hpp
 
@@ -56,10 +57,11 @@ namespace csi281 {
         // Return -1 if it is not found
         int find(const T &item) {
             // YOUR CODE HERE
-            cout << "link find";
+            cout << "Find Link";
+            //Pointer
             Node* current = head;
             int currentIndex = 0;
-            
+            //Finding the index
             while (!(current->data == item))
             {
                 current = current->next;
@@ -77,10 +79,10 @@ namespace csi281 {
             assert(index < count); // can't insert off end
             assert(index >= 0); // no negative indices
             // YOUR CODE HERE
-
+            //Pointer
             Node* current = head;
             int currentIndex = 0;
-
+            //Getting the item
             while (currentIndex != index)
             {
                 current = current->next;
@@ -88,44 +90,44 @@ namespace csi281 {
             }
             return current->data;
         }
-        
+        // Very simlar to Insert at End because they effectivly do the same thing
         // Insert at the beginning of the collection
         void insertAtBeginning(const T &item) {
             // YOUR CODE HERE
-            cout << "link insert beginning" << endl;
-
-            Node* piece = new Node(item);
-
+            cout << "Beginning insert" << endl;
+            //Pointer
+            Node* thing = new Node(item);
+            //Inserting
             if (head == nullptr)
             {
-                tail = piece;
-                head = piece;
+                tail = thing;
+                head = thing;
             }
             else
             {
-                piece/->next = head;
-                head = piece;
+                thing->next = head;
+                head = thing;
             }
             count++;
         }
-        //These 2 were very simlar so, almost a direct copy from insertAtBeginning
+        
         // Insert at the end of the collection
         void insertAtEnd(const T &item) {
             // YOUR CODE HERE
-            cout << "link insert end";
-
+            cout << "Ending Insert";
+            //Pointer
             Node* previous = tail;
-            Node* piece = new Node(item);
-
+            Node* thing = new Node(item);
+            //Insert
             if (previous == nullptr)
             {
-                tail = piece;
-                head = piece;
+                tail = thing;
+                head = thing;
             }
             else
             {
-                previous->next = piece;
-                piece->next = nullptr;
+                previous->next = thing;
+                thing->next = nullptr;
             }
             count++;
         }
@@ -161,9 +163,10 @@ namespace csi281 {
             assert(count > 0);
             // YOUR CODE HERE
             cout << "Remove beginning link" << endl;
-
-            Node* beginning = head;
-            delete(beginning);
+            
+            Node* current = head;
+            //Memory dump
+            delete(current);
         }
         
         // Remove the item at the end of the collection
@@ -171,9 +174,10 @@ namespace csi281 {
             assert(count > 0);
             // YOUR CODE HERE
             cout << "Remove ending link" << endl;
-
-            Node* end = tail;
-            delete(end);
+            //Pointer
+            Node* current = tail;
+            //Memory dump
+            delete(current);
         }
         
         // Remove the item at a specific index

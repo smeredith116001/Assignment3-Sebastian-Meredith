@@ -25,6 +25,8 @@
 //  ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 //  OTHER DEALINGS IN THE SOFTWARE.
 
+
+//Editing by Sebastian Meredith
 #ifndef dynamicarray_hpp
 #define dynamicarray_hpp
 
@@ -56,10 +58,9 @@ namespace csi281 {
             // Find the index of a particular item
             // Return -1 if it is not found>
             // YOUR CODE HERE
-
-
+            //Finder function
             int find(const T& item) {
-                std::cout << "array find" << std::endl;
+                std::cout << "Find the index of a item" << std::endl;
                 int findIndex = 0;
 
                 while (findIndex < capacity && this->backingStore[findIndex] != item)
@@ -75,10 +76,10 @@ namespace csi281 {
             // Get the item at a particular index
             T& get(int index) {
                 // YOUR CODE HERE
-                std::cout << "array get" << std::endl;
+                cout << "Get an item from an index" << endl;
 
                 int findIndex = 0;
-
+                //Getting the item
                 while (findIndex < index)
                 {
                     findIndex++;
@@ -92,9 +93,9 @@ namespace csi281 {
             // Hint: May want to use moveDownFrom()
             void insertAtBeginning(const T& item) {
                 // YOUR CODE HERE
-                std::cout << "array insert beginning" << std::endl;
+                cout << "Insert at the beginning of the array " << endl;
 
-                //ask about correct way to find length
+                
                 int newLength = count + 1;
                 const int STARTINDEX = 0;
 
@@ -103,6 +104,7 @@ namespace csi281 {
                 {
                     this->setCapacity(newLength);
                 }
+                //Believe this is the way to use moveDownFrom
                 this->moveDownFrom(STARTINDEX);
                 this->backingStore[STARTINDEX] = item;
                 count++;
@@ -113,10 +115,10 @@ namespace csi281 {
             // inserting
             void insertAtEnd(const T& item) {
                 // YOUR CODE HERE
-                std::cout << "array insert end" << std::endl;
+                cout << "Insert at the end of the array" << endl;
 
                 int newLength = count + 1;
-
+                //Inserting
                 if (capacity < newLength)
                 {
                     this->setCapacity(newLength);
@@ -131,10 +133,10 @@ namespace csi281 {
             // Hint: May want to use moveDownFrom()
             void insert(const T& item, int index) {
                 // YOUR CODE HERE
-                std::cout << "array insert specific" << std::endl;
+                cout << "Insert at a specfic index of the array" << endl;
 
                 int newLength = count + 1;
-
+                //Inserting
                 if (capacity < newLength)
                 {
                     this->setCapacity(newLength);
@@ -147,10 +149,10 @@ namespace csi281 {
             // Remove the item at the beginning of the collection
             void removeAtBeginning() {
                 // YOUR CODE HERE
-                std::cout << "array remove beginning" << std::endl;
+                cout << "Remove at beginning of array" << endl;
 
                 int i = 0;
-
+                //Removing from the begining 
                 for (i = 0; i < count; i++)
                     this->backingStore[i] = this->backingStore[i + 1];
                 count--;
@@ -160,7 +162,8 @@ namespace csi281 {
             // Hint: This might be very simple.
             void removeAtEnd() {
                 // YOUR CODE HERE
-                std::cout << "array remove end" << std::endl;
+                //I believe this is as simple as it should be 
+                cout << "Remove at end of an array" << endl;
 
                 count--;
             }
@@ -170,9 +173,10 @@ namespace csi281 {
             // down and removing the starting beginning element
             void removeAt(int index) {
                 // YOUR CODE HERE
-                std::cout << "array remove specific" << std::endl;
+                cout << "Remove at a specfic index of the array " << endl;
 
                 int i = index;
+                //Removing
                 for (i = index; i < count; i++)
                     this->backingStore[i] = this->backingStore[i + 1];
                 count--;
