@@ -56,23 +56,78 @@ namespace csi281 {
         // Return -1 if it is not found
         int find(const T &item) {
             // YOUR CODE HERE
+            cout << "link find";
+            Node* current = head;
+            int currentIndex = 0;
+            
+            while (!(current->data == item))
+            {
+                current = current->next;
+                currentIndex++;
+            }
+            if (current->data == item)
+                return currentIndex;
+            else
+                return -1;
         }
         
         // Get the item at a particular index
         T &get(int index) {
+            cout << "link get" << endl;
             assert(index < count); // can't insert off end
             assert(index >= 0); // no negative indices
             // YOUR CODE HERE
+
+            Node* current = head;
+            int currentIndex = 0;
+
+            while (currentIndex != index)
+            {
+                current = current->next;
+                currentIndex++;
+            }
+            return current->data;
         }
         
         // Insert at the beginning of the collection
         void insertAtBeginning(const T &item) {
             // YOUR CODE HERE
+            cout << "link insert beginning" << endl;
+
+            Node* piece = new Node(item);
+
+            if (head == nullptr)
+            {
+                tail = piece;
+                head = piece;
+            }
+            else
+            {
+                piece/->next = head;
+                head = piece;
+            }
+            count++;
         }
-        
+        //These 2 were very simlar so, almost a direct copy from insertAtBeginning
         // Insert at the end of the collection
         void insertAtEnd(const T &item) {
             // YOUR CODE HERE
+            cout << "link insert end";
+
+            Node* previous = tail;
+            Node* piece = new Node(item);
+
+            if (previous == nullptr)
+            {
+                tail = piece;
+                head = piece;
+            }
+            else
+            {
+                previous->next = piece;
+                piece->next = nullptr;
+            }
+            count++;
         }
         
         // Insert at a specific index
@@ -105,12 +160,20 @@ namespace csi281 {
         void removeAtBeginning() {
             assert(count > 0);
             // YOUR CODE HERE
+            cout << "Remove beginning link" << endl;
+
+            Node* beginning = head;
+            delete(beginning);
         }
         
         // Remove the item at the end of the collection
         void removeAtEnd() {
             assert(count > 0);
             // YOUR CODE HERE
+            cout << "Remove ending link" << endl;
+
+            Node* end = tail;
+            delete(end);
         }
         
         // Remove the item at a specific index
